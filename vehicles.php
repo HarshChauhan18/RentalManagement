@@ -62,7 +62,7 @@
                 <a class="nav-link" href="index.php">Home </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="vechicles.php">VEHICLES <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="vehicles.php">VEHICLES <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.php">About</a>
