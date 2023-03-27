@@ -1,0 +1,42 @@
+@import url("./global.css");
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+}
+
+.copy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.social {
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  text-align: center;
+}
+
+.social .bi {
+  transition: ease all 1s;
+  color: rgba(0, 0, 0, 0.75);
+  margin: auto 1rem;
+}
+
+.social .bi:hover {
+  cursor: pointer;
+  color: #ffa502;
+}
+
+@media (width <= 768px) {
+  .social {
+    margin: 0;
+  }
+}
