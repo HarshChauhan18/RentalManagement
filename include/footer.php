@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <link rel="stylesheet" href="/assets/css/footer.css">
+    </head>
 
 <body>
     <div class="row w-100 mx-auto">
