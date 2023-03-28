@@ -71,7 +71,7 @@
               <a href="" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
-              <!-- <a class="cart_link" href="#123">
+              <a class="cart_link" href="#123">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                       <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
@@ -82,7 +82,7 @@
                       <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
                    c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                 </svg>
-              </a> -->
+              </a>
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -251,7 +251,7 @@
 
   <!-- end offer section -->
 
-  <!-- food section -->
+  <!-- Vehicles section -->
 
   <section class="food_section layout_padding-bottom">
     <div class="container">
@@ -622,7 +622,7 @@
     </div>
   </section>
 
-  <!-- end food section -->
+  <!-- end Vehicles section -->
 
   <!-- about section -->
 
