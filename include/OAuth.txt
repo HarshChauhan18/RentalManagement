@@ -1,0 +1,5 @@
+Client Id:
+869671151509-gipk8r9hfqosagm8990hrf1mbako5lo0.apps.googleusercontent.com
+
+client secret
+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
