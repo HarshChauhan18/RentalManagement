@@ -7,7 +7,7 @@ require_once './google/vendor/autoload.php';
 //Make object of Google API Client for call Google API
 $google_client = new Google\Client();
 
-$google_client->setApplicationName('Fiesta');
+$google_client->setApplicationName('RentalManagement');
 
 //Set the OAuth 2.0 Client ID
 $google_client->setClientId('869671151509-gipk8r9hfqosagm8990hrf1mbako5lo0.apps.googleusercontent.com');
