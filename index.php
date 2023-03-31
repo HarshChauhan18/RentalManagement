@@ -130,7 +130,7 @@
                       TGH
                     </h1>
                     <p>
-                      We are  here to give you the best Travelling Experience around the city. Have a nice ride.                    </p>
+                      We are  here to give you the best Travelling Experience around the city. Have a nice ride.</p>
                     <div class="btn-box">
                       <a href="" class="btn1">
                         Book Now
