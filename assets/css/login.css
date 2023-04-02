@@ -14,7 +14,7 @@ body{
 }
 .container{
   max-width: 700px;
-  width: 100%;
+  width: auto;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 15px;
@@ -53,7 +53,7 @@ form .input-box span.details{
 }
 .user-details .input-box input{
   height: 45px;
-  width: 100%;
+  width: fit-content;
   outline: none;
   font-size: 16px;
   border-radius: 5px;
@@ -93,7 +93,7 @@ form .input-box span.details{
  }
  form .button input{
    height: 100%;
-   width: 47%;
+   width: 50%;
    border-radius: 5px;
    border: none;
    color: #fff;

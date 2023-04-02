@@ -23,7 +23,7 @@
         </div>
 		<div class="signup">
 		<span class="details">Don't have an account?</span>
-		<a href="sign-up">Sign Up</a>
+		<a href="registration.php">Sign Up</a>
 		</div>
         <div class="button submit">
           <input type="submit" value="Sign in" name="submit">

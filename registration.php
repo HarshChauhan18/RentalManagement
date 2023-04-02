@@ -1,3 +1,73 @@
+<?php
+// Initialize variables to store user inputs
+$name = "";
+$phone = "";
+$email = "";
+$address = "";
+$password = "";
+$pincode = "";
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Retrieve user inputs and sanitize them to prevent SQL injection and other attacks
+  $name = test_input($_POST["name"]);
+  $phone = test_input($_POST["phone"]);
+  $email = test_input($_POST["email"]);
+  $address = test_input($_POST["address"]);
+  $password = test_input($_POST["password"]);
+  $pincode = test_input($_POST["pincode"]);
+
+  // Validate user inputs
+  $errors = array();
+  if (empty($name)) {
+    $errors["name"] = "Full name is required";
+  }
+  if (empty($phone)) {
+    $errors["phone"] = "Phone number is required";
+  }
+  // You can add more validation rules for other fields
+
+  // If there are no errors, insert the user inputs into the database
+  if (count($errors) == 0) {
+    // Replace the database credentials with your own
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "rentalmanagement";
+
+    // Create a connection to the database
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check if the connection is successful
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare a SQL statement to insert the user inputs into the database
+    $sql = "INSERT INTO `customer_details` (`name`, `phone`, `email`, `address`, `password`, `pincode`)
+            VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$password."', '".$pincode."')";
+
+    // Execute the SQL statement
+    if ($conn->query($sql) === TRUE) {
+      // echo "Registration successful";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close the connection to the database
+    $conn->close();
+  }
+}
+
+// Sanitize user inputs to prevent SQL injection and other attacks
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -10,7 +80,7 @@
   <div class="container">
     <div class="title">Sign Up</div>
     <div class="content">
-      <form action="#">
+      <form action="index.php" method="post">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
@@ -18,11 +88,11 @@
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" name="phone" placeholder="Enter your Number" required>
+            <input type="text" name="phone" placeholder="Enter your Number" pattern="[6789][0-9]{9}" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" name="email" placeholder="Enter your email" required>
+            <input type="text" name="email" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
           </div>
           <div class="input-box">
             <span class="details">Address</span>
@@ -34,7 +104,7 @@
           </div>
           <div class="input-box">
             <span class="details">Enter pincode</span>
-            <input type="text" name="pincode" placeholder="Enter your pincode" required>
+            <input type="text" name="pincode" placeholder="Enter your pincode" pattern="[0-9]{6}" required>
           </div>
         </div>
         <!-- <div class="gender-details">
@@ -58,7 +128,7 @@
           </div>
         </div> -->
         <div class="button submit">
-          <input type="submit" value="Register" name="submit">
+          <input type="submit" value="Sign up" name="submit">
         </div>
       </form>
     </div>
