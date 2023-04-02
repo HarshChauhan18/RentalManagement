@@ -1,67 +1,8 @@
-<?php
-// start session
-session_start();
-
-// check if user is already logged in
-if(isset($_SESSION['email'])) {
-  header("Location: index.php"); // redirect to home page
-}
-
-// check if login form is submitted
-if(isset($_POST['submit'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-
-  // validate inputs (you can add more validation if needed)
-  if(empty($email) || empty($password)) {
-    $error = "Please fill all fields.";
-  }
-  else {
-    // connect to database (replace values with your own)
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "rentalmanagement";
-
-    // create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // check connection
-    if(!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // select user from database
-    $sql = "SELECT * FROM customer_details WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    // verify password
-    if(password_verify($password, $row['password'])) {
-      // set session variables
-      $_SESSION['email'] = $email;
-      $_SESSION['name'] = $row['name'];
-      $_SESSION['phone'] = $row['phone'];
-      $_SESSION['address'] = $row['address'];
-      $_SESSION['pincode'] = $row['pincode'];
-
-      // redirect to home page
-      header("Location: index.php");
-    }
-    else {
-      $error = "Invalid email or password.";
-    }
-
-    mysqli_close($conn);
-  }
-}
-?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    
     <link rel="stylesheet" href="./assets/css/registration.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -73,30 +14,30 @@ if(isset($_POST['submit'])) {
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text" name="name" placeholder="Enter your name" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your Number" required>
+            <input type="text" name="phone" placeholder="Enter your Number" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="text" name="email" placeholder="Enter your email" required>
           </div>
           <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <span class="details">Address</span>
+            <input type="text" name="address" placeholder="Enter your Address" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
+            <input type="text" name="password" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <span class="details">Enter pincode</span>
+            <input type="text" name="pincode" placeholder="Enter your pincode" required>
           </div>
         </div>
-        <div class="gender-details">
+        <!-- <div class="gender-details">
           <input type="radio" name="gender" id="dot-1">
           <input type="radio" name="gender" id="dot-2">
           <input type="radio" name="gender" id="dot-3">
@@ -115,7 +56,7 @@ if(isset($_POST['submit'])) {
             <span class="gender">Prefer not to say</span>
             </label>
           </div>
-        </div>
+        </div> -->
         <div class="button submit">
           <input type="submit" value="Register" name="submit">
         </div>

@@ -11,15 +11,15 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .container{
   max-width: 700px;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0,0,0,0.30);
 }
 .container .title{
   font-size: 25px;
@@ -34,7 +34,7 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .content form .user-details{
   display: flex;
@@ -114,11 +114,12 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+   background: #ffbe33;
  }
  form .button input:hover{
-  /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  transform: scale(0.99);
+  /* background: linear-gradient(-135deg, #71b7e6, #9b59b6); */
   }
  @media(max-width: 584px){
  .container{
