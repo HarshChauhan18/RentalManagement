@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Replace the database credentials with your own
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $pass = "";
     $dbname = "rentalmanagement";
 
     // Create a connection to the database
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = mysqli_connect($servername, $username, $pass, $dbname);
 
     // Check if the connection is successful
     if ($conn->connect_error) {
@@ -48,14 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$password."', '".$pincode."')";
 
     // Execute the SQL statement
-    if ($conn->query($sql) === TRUE) {
-      // echo "Registration successful";
+    if (mysqli_query($conn,$sql)) {
+      header('Location: index.php');
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo "Error: " . mysqli_error($conn);
     }
-
-    // Close the connection to the database
-    $conn->close();
   }
 }
 
@@ -80,7 +77,7 @@ function test_input($data) {
   <div class="container">
     <div class="title">Sign Up</div>
     <div class="content">
-      <form action="index.php" method="post">
+      <form method="post">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
