@@ -1,3 +1,47 @@
+<?php
+// Start session
+session_start();
+
+// Database connection variables
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "rentalmanagement";
+
+// Connect to database
+$conn = mysqli_connect($host, $user, $password, $database);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get email and password from form
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Query database for email and password
+    $sql = "SELECT * FROM `customer_details` WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    // Check if query returned any results
+    if (mysqli_num_rows($result) == 1) {
+        // Set session variables
+        $_SESSION['email'] = $email;
+        $_SESSION['loggedin'] = true;
+
+        // Redirect to index.php
+        header('Location: index.php');
+        exit;
+    } else {
+        // Invalid login credentials
+        echo "Invalid email or password";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
