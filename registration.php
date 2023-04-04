@@ -30,18 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // If there are no errors, insert the user inputs into the database
   if (count($errors) == 0) {
     // Replace the database credentials with your own
-    $servername = "localhost";
-    $username = "root";
-    $pass = "";
-    $dbname = "rentalmanagement";
-
-    // Create a connection to the database
-    $conn = mysqli_connect($servername, $username, $pass, $dbname);
-
-    // Check if the connection is successful
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+    include("./include/config.php");
 
     // Prepare a SQL statement to insert the user inputs into the database
     $sql = "INSERT INTO `customer_details` (`name`, `phone`, `email`, `address`, `password`, `pincode`)
