@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $phone = test_input($_POST["phone"]);
   $email = test_input($_POST["email"]);
   $address = test_input($_POST["address"]);
-  $password = test_input($_POST["password"]);
+  $pass = test_input($_POST["password"]);
   $pincode = test_input($_POST["pincode"]);
 
   // Validate user inputs
@@ -31,10 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (count($errors) == 0) {
     // Replace the database credentials with your own
     include("./include/config.php");
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
 
+    $verify = "SELECT * FROM `customer_details` WHERE email = '$email' OR phone = '$phone'";
+    $result = mysqli_query($conn, $verify);
+    if (mysqli_num_rows($result) > 0) {
+      // the email or number already exists in the database, so give an error message
+      echo "Error: The email or number already exists in the database.";
+    } else {
     // Prepare a SQL statement to insert the user inputs into the database
     $sql = "INSERT INTO `customer_details` (`name`, `phone`, `email`, `address`, `password`, `pincode`)
-            VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$password."', '".$pincode."')";
+            VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$pass."', '".$pincode."')";
 
     // Execute the SQL statement
     if (mysqli_query($conn,$sql)) {
@@ -43,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "Error: " . mysqli_error($conn);
     }
   }
+}
 }
 
 // Sanitize user inputs to prevent SQL injection and other attacks

@@ -47,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="user-details">
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" name="email" placeholder="Enter your email" required>
+            <input type="text" name="email" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" name="password" placeholder="Enter your password" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
           </div>
         </div>
 		<div class="signup">
