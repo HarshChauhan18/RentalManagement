@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the SQL statement
     if (mysqli_query($conn,$sql)) {
-      header('Location: index.php');
+      header('Location: login.php');
     } else {
       echo "Error: " . mysqli_error($conn);
     }
