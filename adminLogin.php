@@ -9,10 +9,10 @@ include("./include/config.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get email and password from form
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $pass = $_POST['password'];
 
     // Query database for email and password
-    $sql = "SELECT * FROM `customer_details` WHERE email='$email' AND password='$password'";
+    $sql = "SELECT * FROM `admin_details` WHERE admin_email='$email' AND admin_password='$pass'";
     $result = mysqli_query($conn, $sql);
 
     // Check if query returned any results
@@ -54,14 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="password" name="password" placeholder="Enter your password" required>
           </div>
         </div>
-		<div class="signup">
-		<span class="details">Don't have an account?</span>
-		<a href="registration.php">Sign Up</a>
-		</div>
-		<div class="signup">
-		<span class="details">Admin Login in Here</span>
-		<a href="adminLogin.php">Sign Up</a>
-		</div>
         <div class="button submit">
           <input type="submit" value="Sign in" name="submit">
         </div>
