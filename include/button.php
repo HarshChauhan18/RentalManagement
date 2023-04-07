@@ -13,14 +13,14 @@
         box-sizing: border-box;
       }
 
-      body {
+      /* body {
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: sans-serif;
         background: #000;
-      }
+      } */
       button {
         border: none;
         padding: 20px 40px;

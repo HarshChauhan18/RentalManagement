@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		</div>
 		<div class="signup">
 		<span class="details">Admin Login in Here</span>
-		<a href="adminLogin.php">Sign Up</a>
+		<a href="adminLogin.php">Sign in</a>
 		</div>
         <div class="button submit">
           <input type="submit" value="Sign in" name="submit">
