@@ -123,10 +123,10 @@ include_once("./include/config.php");
                 <input type="text" class="form-control" placeholder="Your Name" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
+                <input type="text" class="form-control" placeholder="Phone Number" pattern="[6789][0-9]{9}" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
+                <input type="email" class="form-control" placeholder="Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
               </div>
               <div>
                 <select class="form-control nice-select wide">
