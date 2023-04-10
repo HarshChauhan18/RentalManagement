@@ -1,12 +1,12 @@
 <?php
 // Initialize variables to store user inputs
+session_start();
 $name = "";
 $phone = "";
 $email = "";
 $address = "";
 $password = "";
 $pincode = "";
-
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve user inputs and sanitize them to prevent SQL injection and other attacks
@@ -33,29 +33,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("./include/config.php");
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $_SESSION['name'] = $name;
+    $_SESSION['email'] = $email;
+    $_SESSION['phone'] = $phone;
+    $_SESSION['address'] = $address;
+    $_SESSION['password'] = $pass;
+    $_SESSION['pincode'] = $pincode;
 
-    $verify = "SELECT * FROM `customer_details` WHERE email = '$email' OR phone = '$phone'";
-    $result = mysqli_query($conn, $verify);
-    if (mysqli_num_rows($result) > 0) {
-      // the email or number already exists in the database, so give an error message
-      echo "Error: The email or number already exists in the database.";
-    } else {
-    // Prepare a SQL statement to insert the user inputs into the database
-    $sql = "INSERT INTO `customer_details` (`name`, `phone`, `email`, `address`, `password`, `pincode`)
-            VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$pass."', '".$pincode."')";
+    if (isset($_SESSION['email']) && $_SESSION['phone']) {
+      $verify = "SELECT * FROM `customer_details` WHERE email = '$email' OR phone = '$phone'";
+      $result = mysqli_query($conn, $verify);
+      if (mysqli_num_rows($result) > 0) {
+        // the email or number already exists in the database, so give an error message
+        echo "Error: The email or number already exists in the database.";
+      } else {
+        header('Location: ./include/send_otp_mail.php');
+        
+        // Prepare a SQL statement to insert the user inputs into the database
+        // $sql = "INSERT INTO `customer_details` (`name`, `phone`, `email`, `address`, `password`, `pincode`)
+        //         VALUES ('". $name ."', '".$phone."', '".$email."', '".$address."', '".$pass."', '".$pincode."')";
 
-    // Execute the SQL statement
-    if (mysqli_query($conn,$sql)) {
-      header('Location: login.php');
-    } else {
-      echo "Error: " . mysqli_error($conn);
+        // Execute the SQL statement
+        // if (mysqli_query($conn,$sql)) {
+        //   header('Location: login.php');
+        // } else {
+        //   echo "Error: " . mysqli_error($conn);
+        // }
+      }
     }
   }
 }
-}
 
 // Sanitize user inputs to prevent SQL injection and other attacks
-function test_input($data) {
+function test_input($data)
+{
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
@@ -66,11 +77,14 @@ function test_input($data) {
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./assets/css/registration.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./assets/css/registration.css">
+  <link rel="stylesheet" href="./assets/css/modal.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <body>
   <div class="container">
     <div class="title">Sign Up</div>
@@ -122,12 +136,13 @@ function test_input($data) {
             </label>
           </div>
         </div> -->
+        <?php $_SESSION['otp'] = rand(100000, 999999); ?>
         <div class="button submit">
           <input type="submit" value="Sign up" name="submit">
         </div>
       </form>
     </div>
   </div>
-
 </body>
+
 </html>
