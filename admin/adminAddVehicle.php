@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$image = $_FILES["image"]["name"];
 
 	// Upload the image to the server
-	$target_dir = "./assets/images/";
+	$target_dir = "../assets/images/";
 	$target_file = $target_dir . basename($image);
 	move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
