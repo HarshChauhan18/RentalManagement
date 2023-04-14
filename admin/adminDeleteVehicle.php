@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Delete the selected vehicle from the database
-    $sql = "DELETE FROM vehicles WHERE id = '$vehicle_id'";
+    $sql = "DELETE FROM `vehicles` WHERE id = '$vehicle_id'";
 
     if (mysqli_query($conn, $sql)) {
         echo "Vehicle deleted successfully";
