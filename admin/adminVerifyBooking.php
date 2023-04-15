@@ -8,7 +8,7 @@ if (!$conn) {
 }
 
 // Retrieve all pending booking requests from the database
-$sql = "SELECT * FROM bookings WHERE status = 'pending'";
+$sql = "SELECT * FROM `bookings` WHERE status = 'pending'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
